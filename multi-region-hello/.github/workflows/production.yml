@@ -1,0 +1,82 @@
+on:
+  push:
+    branches:
+    - main
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    # Configures AWS credentials from github secrets
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+    - name: sam build
+      uses: TractorZoom/sam-cli-action@master
+      with:
+        sam_command: "build"
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    - name: sam deploy default
+      uses: youyo/aws-sam-action/python3.7@master
+      with:
+          sam_command: 'deploy --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset'
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # Deploy on AWS Frankfurt 
+    - name: sam deploy frankfurt
+      uses: youyo/aws-sam-action/python3.7@master
+      with:
+          sam_command: 'deploy --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-central-1 --config-file ./regions/samconfig-frankfurt.toml'
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # Deploy on AWS Ireland 
+    - name: sam deploy ireland
+      uses: youyo/aws-sam-action/python3.7@master
+      with:
+          sam_command: 'deploy --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-1 --config-file ./regions/samconfig-ireland.toml'
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # Deploy on AWS London 
+    - name: sam deploy london
+      uses: youyo/aws-sam-action/python3.7@master
+      with:
+          sam_command: 'deploy --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-2 --config-file ./regions/samconfig-london.toml'
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # Deploy on AWS Milan 
+    - name: sam deploy milan
+      uses: youyo/aws-sam-action/python3.7@master
+      with:
+          sam_command: 'deploy --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-south-1 --config-file ./regions/samconfig-milan.toml'
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # Deploy on AWS Paris 
+    - name: sam deploy paris
+      uses: youyo/aws-sam-action/python3.7@master
+      with:
+          sam_command: 'deploy --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-3 --config-file ./regions/samconfig-paris.toml'
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # Deploy on AWS Stockholm 
+    - name: sam deploy paris
+      uses: youyo/aws-sam-action/python3.7@master
+      with:
+          sam_command: 'deploy --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-north-1 --config-file ./regions/samconfig-stockholm.toml'
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
