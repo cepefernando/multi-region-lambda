@@ -3,7 +3,6 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "hello-world-multi-region"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-22hphdrr75heq"
 s3_prefix = "hello-world-multi-region"
 region = "eu-west-2"
 confirm_changeset = true
