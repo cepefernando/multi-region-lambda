@@ -2,8 +2,8 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "hello-world-multi-region"
-s3_prefix = "hello-world-multi-region"
+stack_name = "hello-world-multiregions"
+s3_prefix = "hello-world-multiregions"
 region = "eu-central-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
