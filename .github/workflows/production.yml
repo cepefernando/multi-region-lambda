@@ -29,7 +29,7 @@ jobs:
     - name: sam deploy frankfurt
       uses: youyo/aws-sam-action/python3.7@master
       with:
-          sam_command: 'deploy  --resolve-s3 --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-central-1 --config-file ./regions/samconfig-frankfurt.toml'
+          sam_command: 'deploy  --resolve-s3 --stack-name hello-world-multi-regions --no-fail-on-empty-changeset --no-confirm-changeset --region eu-central-1 --config-file ./regions/samconfig-frankfurt.toml'
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -37,7 +37,7 @@ jobs:
     - name: sam deploy ireland
       uses: youyo/aws-sam-action/python3.7@master
       with:
-          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-1 --config-file ./regions/samconfig-ireland.toml'
+          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-regions --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-1 --config-file ./regions/samconfig-ireland.toml'
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -45,7 +45,7 @@ jobs:
     - name: sam deploy london
       uses: youyo/aws-sam-action/python3.7@master
       with:
-          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-2 --config-file ./regions/samconfig-london.toml'
+          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-regions --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-2 --config-file ./regions/samconfig-london.toml'
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -53,7 +53,7 @@ jobs:
     - name: sam deploy milan
       uses: youyo/aws-sam-action/python3.7@master
       with:
-          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-south-1 --config-file ./regions/samconfig-milan.toml'
+          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-regions --no-fail-on-empty-changeset --no-confirm-changeset --region eu-south-1 --config-file ./regions/samconfig-milan.toml'
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -61,7 +61,7 @@ jobs:
     - name: sam deploy paris
       uses: youyo/aws-sam-action/python3.7@master
       with:
-          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-3 --config-file ./regions/samconfig-paris.toml'
+          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-regions --no-fail-on-empty-changeset --no-confirm-changeset --region eu-west-3 --config-file ./regions/samconfig-paris.toml'
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -69,7 +69,7 @@ jobs:
     - name: sam deploy paris
       uses: youyo/aws-sam-action/python3.7@master
       with:
-          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-region --no-fail-on-empty-changeset --no-confirm-changeset --region eu-north-1 --config-file ./regions/samconfig-stockholm.toml'
+          sam_command: 'deploy --resolve-s3 --stack-name hello-world-multi-regions --no-fail-on-empty-changeset --no-confirm-changeset --region eu-north-1 --config-file ./regions/samconfig-stockholm.toml'
       env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
